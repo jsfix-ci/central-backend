@@ -11,8 +11,9 @@ jobs:
 
     steps:
       - checkout
-      - run: node lib/bin/check-file-headers.js
       - run: npm ci
       - run: node lib/bin/create-docker-databases.js
-      - run: make test-full
+      - run: source testloop.sh 100
+      - store_artifacts:
+          path: ~/repo/testloop.txt
 
